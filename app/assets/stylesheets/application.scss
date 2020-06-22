@@ -4,4 +4,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@import "common";
+
+// ようこそMchatへのSCSS
 @import "top";
+
+// アカウント作成ページのCSS
+@import "users/sign_up";
