@@ -16,6 +16,16 @@
         <img id="thumbnail" class="userImgPreview_content" accept="image/*" src="">
         <p class="userImgPreview_text">画像をアップロード済み</p>
       </div>
+<% 
+=begin
+%>    //　もし画像アップロードの表示がわかりづらければシンプルに以下コードを挿入して13行目を削除しても動きそう
+      <div class="form-group">
+        画像:
+        <%= f.file_field :img_name %>
+      </div>
+<%
+=end
+%>
       <div class="form-group">
         <label>名前</label>
         <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
