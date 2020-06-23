@@ -5,20 +5,8 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- reference
+  https://www.techpit.jp/courses/enrolled/378695
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+until 5-1 (user-other-user ) is almost exactly the same as this curriculum.
+if you get stuck with editing new things, just copy "user-other-user" into your work-tree and try again!!
