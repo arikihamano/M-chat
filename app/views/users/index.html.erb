@@ -1,51 +1,25 @@
 <div class="topPage">
-
-<%# ナビバー この後通常のナビバーに置き換える %>
-<% 
-=begin
-%>
-
-  <nav class="nav">
-    <ul>
-      <li class="personIcon"><%= link_to(content_tag(:i, "", class: 'fas fa-2x fa-user'), user_path(current_user.id)) %></li>
-      <li class="appIcon"><%= link_to image_tag("techpit-march-icon.png"), action: "index" %></li>
-    </ul>
-  </nav>
-
-<%
-=end
-%>
-<%# ここまでナビバー %>
-
-<section id="team" class="pb-5">
-    <div class="container">
-        <div class="row">
-          <% @users.each do |user| %>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-                <div class="user-box">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <p><img class=" img-fluid" src="<%= user.img_name %>" alt="card image"></p>
-                            <h4 class="card-title"><%= user.name %></h4>
-                            <p class="card-text"><%= user.self_introduction %></p>
-                            <a href="#" class="btn btn-primary btn-sm">チャット画面を開く</i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-                <div class="user-box">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <p><img class=" img-fluid" src="<%= user.img_name %>" alt="card image"></p>
-                            <h4 class="card-title"><%= user.name %></h4>
-                            <p class="card-text"><%= user.self_introduction %></p>
-                            <a href="#" class="btn btn-primary btn-sm">チャット画面を開く</i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          <% end %>
-        </div>
-    </div>
-</section>
+  <section id="team" class="pb-5">
+      <div class="container">
+          <div class="row">
+            <% @users.each do |user| %>
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                  <div class="user-box">
+                      <div class="card">
+                          <div class="card-body text-center">
+                              <p><img class=" img-fluid" src="<%= user.img_name %>" alt="card image"></p>
+                              <h4 class="card-title"><%= user.name %></h4>
+                              <p class="card-text"><%= user.self_introduction %></p>
+                              <%= form_tag :chat_index, method: :post do %>
+                                <input name="user_id" type="hidden" value="<%= user.id %>" />
+                                <%= submit_tag 'チャットを開く', class: "btn btn-primary btn-sm" %>
+                              <% end %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+      </div>
+  </section>
+</div>
