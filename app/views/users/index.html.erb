@@ -1,3 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
+
+
+    <a href="#" class="navbar-brand text-light font-weight-bold">M Chat</i></a>
+    <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#nav"><span class="navbar-toggler-icon"></span></button>
+
+
+    <div class="collapse navbar-collapse justify-content-between" id="nav">
+       <form action="#" class="search">
+          <input
+            type="text"
+            class="search__input"
+            placeholder="ユーザー名で検索"
+          />
+          <button class="search__button">
+            <i class="fas fa-search text-muted"></i>
+          </button>
+        </form>
+        <ui class="navbar-nav ">
+            <%= link_to "チャット一覧", "#", class: "nav-link text-light font-weight-bold px-3" %>
+            <%= link_to "自分のプロフィール", user_path(current_user[:id]), class: "nav-link text-light font-weight-bold px-3" %>
+        </ui>
+    </div>
+</nav>
+
+
+        <form class="form-inline ml-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+                    <button type="button"><i class="fas fa-search text-muted"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
+
 <div class="topPage">
   <section id="team" class="pb-5">
       <div class="container">
