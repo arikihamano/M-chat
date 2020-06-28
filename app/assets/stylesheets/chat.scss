@@ -39,6 +39,8 @@
     }
   }
   .messagesArea {
+    // video1では以下のようになっている
+    // overflow-y: hidden;
     overflow: scroll;
     height: 72vh;
     .message {

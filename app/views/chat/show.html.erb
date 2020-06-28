@@ -15,5 +15,8 @@
     <div class='container'>
       <input type="text" data-behavior="room_speaker" class="messageInputForm_input" placeholder="メッセージを入力...">
     </div>
+    <%# youtubeの動画では以下のボタンで送信をしているが、techpitでは上のinputからエンターをして送信をする。ここの違いでバグがで発生する可能性有。
+    現状youtubeの動画ではそもそもform_withを使ってメッセージのフォームタグを出しているのでtechpitとは構造が違う %>
+    <%# <%= form.submit "メッセージを送信する", class: "btn btn-primary"%>
   </form>
 </div>
