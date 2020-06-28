@@ -45,11 +45,11 @@
                       <div class="card">
                           <div class="card-body text-center">
                               <p><img class=" img-fluid" src="<%= user.img_name %>" alt="card image"></p>
-                              <h4 class="card-title"><%= user.name %></h4>
+                              <h4><%= link_to user.name, user_path(user[:id]), class: "card-title" %></h4>
                               <p class="card-text"><%= user.self_introduction %></p>
                               <%= form_tag :chat_index, method: :post do %>
                                 <input name="user_id" type="hidden" value="<%= user.id %>" />
-                                <%= submit_tag 'チャットを開く', class: "btn btn-primary btn-sm" %>
+                                <%= submit_tag 'チャットを開く', class: "btn btn-primary btn-sm mb-2" %>
                               <% end %>
                           </div>
                       </div>
