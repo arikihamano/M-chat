@@ -1,7 +1,7 @@
 import consumer from "./consumer";
 
 consumer.subscriptions.create(
-  { channel: "ChatRoomChannel", chat_room_id: 1 },
+  { channel: "ChatRoomChannel", room_id: 1 },
   {
     connected() {
       console.log("connected!!!");
