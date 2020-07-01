@@ -12,14 +12,14 @@ class ChatController < ApplicationController
       ChatRoomUser.create(chat_room: chat_room, user_id: params[:user_id])
     end
     # チャットルームへ遷移させる
-    redirect_to action: :show, id: chat_room.id
+    redirect_to controller: :messages, action: :show, id: chat_room.id
   end
 
-  def show
-    # チャット相手の情報を取得する
-    chat_room = ChatRoom.find_by(id: params[:id])
-    @chat_room_user = chat_room.chat_room_users.
-      where.not(user_id: current_user.id).first.user
-    @chat_messages = ChatMessage.where(chat_room: chat_room).order(:created_at)
-  end
+  # def show
+  #   # チャット相手の情報を取得する
+  #   chat_room = ChatRoom.find_by(id: params[:id])
+  #   @chat_room_user = chat_room.chat_room_users.
+  #     where.not(user_id: current_user.id).first.user
+  #   @chat_messages = ChatMessage.where(chat_room: chat_room).order(:created_at)
+  # end
 end
