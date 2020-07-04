@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <%= form_with(model: @chat_message, local: true) do |form| %>
+  <%= form_with(model: ChatMessage.new, local: true) do |form| %>
 
     <%= form.hidden_field :room_id, value: @chat_room.id %>
 
