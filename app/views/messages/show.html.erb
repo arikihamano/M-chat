@@ -8,13 +8,17 @@
   </header>
   <div class="container">
     <div class="messagesArea messages">
-      <%= render @chat_messages %>
+      <% @chat_messages.each do |chat_message| %>
+        <tr>
+          <td><%= chat_message.message %></td><br>
+        </tr>
+      <% end %>
     </div>
   </div>
 
-  <%= form_with(model: ChatMessage.new, local: true) do |form| %>
+  <%= form_with url: message_path do |form| %>
 
-    <%= form.hidden_field :room_id, value: @chat_room.id %>
+    <%= form.hidden_field :room_id, value: @chat_room %>
 
     <div class="input-group">
       <%= form.text_field :content, placeholder: "Type your message here...", class: 'form-control' %>
