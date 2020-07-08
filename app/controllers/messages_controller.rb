@@ -15,5 +15,7 @@ class MessagesController < ApplicationController
     @chat_message.chat_room_id = params[:id] # ここは間違っているかもだが、そもそもフォームが表示できないので一度スキップ
     @chat_message.message = params[:content]
     @chat_message.save
+
+    ActionCable.server.broadcast "room_channel_#{@chat_message.chat_room_id}", message: "hello"
   end
 end
