@@ -16,6 +16,11 @@ class MessagesController < ApplicationController
     @chat_message.message = params[:content]
     @chat_message.save
 
-    ActionCable.server.broadcast "room_channel_#{@chat_message.chat_room_id}", message: "hello"
+    html = render(
+      partial: 'message',
+      locals: { chat_message: @chat_message }
+    )
+
+    ActionCable.server.broadcast "room_channel_#{@chat_message.chat_room_id}", html: html
   end
 end
