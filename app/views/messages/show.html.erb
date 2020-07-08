@@ -9,9 +9,20 @@
   <div class="container">
     <div class="messagesArea messages">
       <% @chat_messages.each do |chat_message| %>
-        <tr>
-          <td><%= chat_message.message %></td><br>
-        </tr>
+        <div class="message">
+          <span class="message__name">
+            <%= chat_message.user.name %>:
+          </span>
+          <% if chat_message.user.id == current_user.id %>
+            <div class="message__text message_current_user">
+              <div><%= chat_message.message %></div>
+            </div>
+          <% else %>
+            <div class="message__text">
+              <div><%= chat_message.message %></div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
