@@ -14,6 +14,8 @@ consumer.subscriptions.create(
 
     received(data) {
       console.log(data);
+      const messageContainer = document.getElementById("chat-messages");
+      messageContainer.innerHTML = messageContainer.innerHTML + data.html;
     },
 
     speak: function () {

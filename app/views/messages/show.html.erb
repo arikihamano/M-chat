@@ -7,7 +7,7 @@
     </div>
   </header>
   <div class="container">
-    <div class="messagesArea messages">
+    <div class="messagesArea messages" id="chat-messages">
       <% @chat_messages.each do |chat_message| %>
         <%= render 'message', chat_message: chat_message %>
       <% end %>
