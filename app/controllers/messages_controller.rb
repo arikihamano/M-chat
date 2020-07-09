@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
     @chat_message.message = params[:content]
     @chat_message.save
 
-    # ここで実行すれば正しく、console.logでデータが取れるが、jobに移動させると取れない
+    # ここで実行すれば正しく、console.logでデータが取れるが、jobに移動させるとpartialをmessages/messageにしないと取れない
     # html = render(
     #   partial: 'message',
     #   locals: { chat_message: @chat_message }
