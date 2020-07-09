@@ -16,11 +16,14 @@ class MessagesController < ApplicationController
     @chat_message.message = params[:content]
     @chat_message.save
 
-    html = render(
-      partial: 'message',
-      locals: { chat_message: @chat_message }
-    )
+    # ここで実行すれば正しく、console.logでデータが取れるが、jobに移動させると取れない
+    # html = render(
+    #   partial: 'message',
+    #   locals: { chat_message: @chat_message }
+    # )
 
-    ActionCable.server.broadcast "room_channel_#{@chat_message.chat_room_id}", html: html
+    # ActionCable.server.broadcast "room_channel_#{@chat_message.chat_room_id}", html: html
+
+    SendMessageJob.perform_later(@chat_message)
   end
 end
