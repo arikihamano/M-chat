@@ -6,18 +6,38 @@
   background: #eee !important;
 }
 
+.navbar {
+  background-color: #3c455c;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.title {
+  font-family: cursive;
+}
+
+.search-button {
+  border-radius: 2px !important;
+}
+
+.search-box {
+  border-radius: 2px !important;
+}
+
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #108d6f;
-  border-color: #108d6f;
+  background-color: #966e52;
+  border-color: #966e52;
   box-shadow: none;
   outline: none;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #007b5e;
-  border-color: #007b5e;
+  background-color: #60412b;
+  border-color: #60412b;
 }
 
 section {
@@ -38,7 +58,7 @@ section {
 }
 
 .user-box .card .card-title {
-  color: #007b5e !important;
+  color: #60412b !important;
 }
 
 .user-box .card .card-body img {

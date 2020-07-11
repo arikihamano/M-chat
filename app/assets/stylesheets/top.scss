@@ -11,6 +11,10 @@
     text-align: center;
     &_title {
       margin-top: 12vh;
+      font-size: 30px;
+    }
+    &_text {
+      border-bottom: solid 1px black;
     }
     &_btn {
       display: block;
@@ -18,8 +22,7 @@
       padding: 20px;
       margin: 0 auto;
       border-radius: 30px;
-      // トップページのボタンのピンク色は以下
-      background: #fd5068;
+      background: #60412b;
       color: #fff;
     }
   }
