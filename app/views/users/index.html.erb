@@ -16,14 +16,20 @@
             <i class="fas fa-search text-muted"></i>
           </button>
         </form> %>
-        <form class="form-inline ml-3">
+        <%# <form class="form-inline ml-3">
             <div class="input-group">
                 <input type="text" class="form-control mr-2 search-box" placeholder="ユーザー名で検索"">
                 <div class="input-group-append">
                     <button type="button" class="search-button"><i class="fas fa-search text-muted"></i></button>
                 </div>
             </div>
-        </form>
+        </form> %>
+
+        <%= form_with(url: users_path, method: :get, local: true) do |f| %>
+          <%= f.text_field :search, :value => params[:search], :placeholder => "ユーザー名を入力" %>
+          <%= f.submit '検索する', :name => nil %>
+        <% end %>
+
         <ui class="navbar-nav ">
             <%= link_to "チャット一覧", "#", class: "nav-link text-light font-weight-bold px-3" %>
             <%= link_to "自分のプロフィール", user_path(current_user[:id]), class: "nav-link text-light font-weight-bold px-3" %>
