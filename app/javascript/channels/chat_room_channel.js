@@ -1,6 +1,31 @@
 import consumer from "./consumer";
 
 document.addEventListener("turbolinks:load", () => {
+  window.messageContent = document.getElementById("content");
+
+  // ********** 以下を追加 **********
+  const messageButton = document.getElementById("message-button");
+
+  // 空欄でなければボタンを有効化，空欄なら無効化する関数
+  const button_activation = () => {
+    if (messageContent.value === "") {
+      messageButton.classList.add("disabled");
+    } else {
+      messageButton.classList.remove("disabled");
+    }
+  };
+
+  // フォームに入力した際の動作
+  messageContent.addEventListener("input", () => {
+    button_activation();
+  });
+
+  // 送信ボタンが押された時にボタンを無効化
+  messageButton.addEventListener("click", () => {
+    messageButton.classList.add("disabled");
+  });
+  // ********** 以上を追加 **********
+
   const chat_room_element = document.getElementById("chat_room-id");
   const chat_room_id = Number(
     chat_room_element.getAttribute("data-chat_room-id")
