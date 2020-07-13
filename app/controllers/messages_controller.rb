@@ -31,8 +31,4 @@ class MessagesController < ApplicationController
     SendMessageJob.perform_later(@chat_message)
   end
 
-  def correct_user?
-    # カレントユーザーのIDを取得
-    # カレントユーザーのIDがチャットルームに入っているかどうかを返す
-  end
 end

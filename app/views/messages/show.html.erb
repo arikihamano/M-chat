@@ -9,12 +9,10 @@
       <div class="chatPartner_name"><%= @chat_room_user.name %></div>
     </div>
   </header>
-  <div class="container">
     <div class="messagesArea messages" id="chat-messages">
       <% @chat_messages.each do |chat_message| %>
         <%= render 'message', chat_message: chat_message %>
       <% end %>
-    </div>
   </div>
 
   <%= form_with url: message_path do |form| %>

@@ -38,12 +38,13 @@
     }
   }
   .messagesArea {
-    // video1では以下のようになっている
-    // overflow-y: hidden;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 72vh;
+    padding-left: 48px;
+    padding-right: 48px;
     .message {
       margin-top: 24px;
+      margin-bottom: 24px;
       &__name {
         color: #45494b;
       }
