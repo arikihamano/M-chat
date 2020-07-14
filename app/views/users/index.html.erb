@@ -31,7 +31,7 @@
         <% end %>
 
         <ui class="navbar-nav ">
-            <%= link_to "チャット一覧", "#", class: "nav-link text-light font-weight-bold px-3" %>
+            <%= link_to "チャット一覧", chat_index_path, class: "nav-link text-light font-weight-bold px-3" %>
             <%= link_to "自分のプロフィール", user_path(current_user[:id]), class: "nav-link text-light font-weight-bold px-3" %>
         </ui>
     </div>

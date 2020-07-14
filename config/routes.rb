@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :users, only: %i[index show]
 
-  resources :chat, only: %i[create show]
+  resources :chat, only: %i[create show index]
 
   resources :messages
   post '/messages/:id', to: 'messages#create'

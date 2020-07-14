@@ -1,0 +1,4 @@
+<p>このページはチャット一覧になる予定</p>
+<% @current_user_chat_rooms.each do |current_user_chat_room| %>
+<%= current_user_chat_room.chat_room_users.where.not(user_id: current_user.id) %>
+<% end %>

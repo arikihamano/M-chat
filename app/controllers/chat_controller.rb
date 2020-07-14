@@ -17,6 +17,19 @@ class ChatController < ApplicationController
     redirect_to controller: :messages, action: :show, id: chat_room.id
   end
 
+  def index
+    @current_user_chat_rooms = ChatRoomUser.where(user_id: current_user.id).map(&:chat_room).compact
+    
+    binding.pry
+    
+    # 削除したチャットルームのところはnilを返してしまうのでnil.chat_room_usersでエラーを出しそう
+    # @chat_room_users = @current_user_chat_rooms.chat_room_users.
+    # where.not(user_id: current_user.id)
+
+    
+  end
+  
+
   # def show
   #   # チャット相手の情報を取得する
   #   chat_room = ChatRoom.find_by(id: params[:id])
