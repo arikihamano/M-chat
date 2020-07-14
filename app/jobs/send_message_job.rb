@@ -5,13 +5,21 @@ class SendMessageJob < ApplicationJob
     # html = ApplicationController.render(
 
     # deviseのときはこっち？
-    html = ApplicationController.render_with_signed_in_user(
+    mine = ApplicationController.render_with_signed_in_user(
       chat_message.user,
-      partial: 'messages/message',
-    
+      partial: 'messages/mine',
+
       locals: { chat_message: chat_message }
     )
 
-    ActionCable.server.broadcast "room_channel_#{chat_message.chat_room_id}", html: html
+    theirs = ApplicationController.render_with_signed_in_user(
+      chat_message.user,
+      partial: 'messages/theirs',
+
+      locals: { chat_message: chat_message }
+    )
+
+
+    ActionCable.server.broadcast "room_channel_#{chat_message.chat_room_id}", mine: mine, theirs: theirs, chat_message: chat_message
   end
 end

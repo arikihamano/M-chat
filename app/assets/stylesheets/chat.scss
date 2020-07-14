@@ -69,13 +69,13 @@
         }
       }
       // 受信直後はページを更新しないと相手のメッセージにも以下スタイルが適用されてしまうため、一度スキップ
-      // &_current_user {
-      //   background: #fd5068;
-      //   color: #fff;
-      //   &:before {
-      //     border-right: 10px solid #fd5068;
-      //   }
-      // }
+      &_current_user {
+        background: #60412b;
+        color: #fff;
+        &:before {
+          border-right: 10px solid #60412b;
+        }
+      }
     }
   }
   .messageInputForm {
