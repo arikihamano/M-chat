@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def show
       # チャット相手の情報を取得する
     @chat_room = ChatRoom.find_by(id: params[:id])

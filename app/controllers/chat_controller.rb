@@ -1,4 +1,6 @@
 class ChatController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     # 自分の持っているチャットルームを取得
     current_user_chat_rooms = ChatRoomUser.where(user_id: current_user.id).map(&:chat_room)
