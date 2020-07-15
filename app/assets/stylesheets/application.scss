@@ -27,6 +27,10 @@
 // チャット画面のSCSS
 @import "chat";
 
+// チャット一覧のSCSS
+@import "chat_list";
+
 body {
   font-family: sans-serif;
+  background-color: #eee;
 }

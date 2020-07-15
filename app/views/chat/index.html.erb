@@ -1,4 +1,23 @@
-<p>このページはチャット一覧になる予定</p>
-<% @current_user_chat_rooms.each do |current_user_chat_room| %>
-<%= current_user_chat_room.chat_room_users.where.not(user_id: current_user.id) %>
-<% end %>
+<div class="user-list">
+  <div class="container">
+  <% @current_user_chat_rooms.each do |current_user_chat_room| %>
+    <div class="list-group">
+      <% if current_user_chat_room != nil %>
+        <div class="list-group-item">
+          <% user = current_user_chat_room.chat_room_users.where.not(user_id: current_user.id).first.user %>
+          <p><img class="user-img" src="<%= user.img_name %>" alt="card image"></p>
+          <%= user.name %>
+          
+          <%# それぞれのチャットルームの最後のメッセージを取得したい %>
+          <%= ChatRoomUser.where(user_id: current_user.id).map(&:chat_room).last.chat_messages.last.message if ChatRoomUser.where(user_id: current_user.id).map(&:chat_room).last != nil %>
+
+            <%= form_tag :chat_index, method: :post do %>
+              <input name="user_id" type="hidden" value="<%= user.id %>" />
+              <%= submit_tag 'チャットを開く', class: "btn btn-primary btn-sm mb-2" %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>

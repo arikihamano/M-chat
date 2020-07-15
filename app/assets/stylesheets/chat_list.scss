@@ -1,0 +1,15 @@
+.container {
+  padding-top: 20px;
+}
+
+.user-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
