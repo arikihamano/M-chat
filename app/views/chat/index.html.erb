@@ -8,7 +8,6 @@
           <p><img class="user-img" src="<%= user.img_name %>" alt="card image"></p>
           <%= user.name %>
 
-
           <%# ログインしているユーザーのチャットルーム一覧を取得しようとしたら間違えてuser_id: current_user.idと書くところをuser.idにしたら動いた %>
             <% chat_rooms = ChatRoomUser.where(user_id: user.id).map(&:chat_room) %>
           <%# チャットルーム一覧の中で、特定のユーザーとのチャットルームを取得するつもりだったが、上記の打ち間違いを受けて適当にlastにしたら動いた。意味不明） %>
