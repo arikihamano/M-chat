@@ -19,7 +19,6 @@ class ChatController < ApplicationController
 
   def index
     @current_user_chat_rooms = ChatRoomUser.where(user_id: current_user.id).map(&:chat_room)
-    
     # 削除したチャットルームのところはnilを返してしまうのでnil.chat_room_usersでエラーを出しそう
     # @chat_room_users = @current_user_chat_rooms.chat_room_users.
     # where.not(user_id: current_user.id)

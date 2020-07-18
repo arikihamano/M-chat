@@ -1,40 +1,40 @@
 <div class="user-list">
   <div class="container">
-  <% @current_user_chat_rooms.each do |current_user_chat_room| %>
-    <div class="list-group">
-      <% if current_user_chat_room != nil %>
-        <div class="list-group-item">
-          <% user = current_user_chat_room.chat_room_users.where.not(user_id: current_user.id).first.user %>
-          <p><img class="user-img" src="<%= user.img_name %>" alt="card image"></p>
+    <% @current_user_chat_rooms.each do |current_user_chat_room| %>
+      <div class="list-group">
+        <% if current_user_chat_room != nil %>
+          <div class="list-group-item">
+            <% user = current_user_chat_room.chat_room_users.where.not(user_id: current_user.id).first.user %>
+            <p><img class="user-img" src="<%= user.img_name %>" alt="card image"></p>
 
-          <div class="user-info">
-            <div class="user-name"><%= user.name %></div>
+            <div class="user-info">
+              <div class="user-name"><%= user.name %></div>
 
-            <div class="last-message">
-              <%# ログインしているユーザーのチャットルーム一覧を取得しようとしたら間違えてuser_id: current_user.idと書くところをuser.idにしたら動いた %>
-                <% chat_rooms = ChatRoomUser.where(user_id: user.id).map(&:chat_room) %>
-              <%# チャットルーム一覧の中で、特定のユーザーとのチャットルームを取得するつもりだったが、上記の打ち間違いを受けて適当にlastにしたら動いた。意味不明） %>
-                <% chat_room = chat_rooms.last %>
-              <%# そのチャットルームのメッセージ一覧を取得 %>
-                <% messages = chat_room.chat_messages %>
-              <%# メッセージ一覧の中の最新のメッセージのメッセージ内容を取得%>
-                <% newest_message = messages.last.message %>
-              <%# 表示 %>
-                <p><%= newest_message %></p>
+              <div class="last-message">
+                <%# ログインしているユーザーのチャットルーム一覧を取得しようとしたら間違えてuser_id: current_user.idと書くところをuser.idにしたら動いた %>
+                  <% chat_rooms = ChatRoomUser.where(user_id: user.id).map(&:chat_room) %>
+                <%# チャットルーム一覧の中で、特定のユーザーとのチャットルームを取得するつもりだったが、上記の打ち間違いを受けて適当にlastにしたら動いた。意味不明） %>
+                  <% chat_room = chat_rooms.last %>
+                <%# そのチャットルームのメッセージ一覧を取得 %>
+                  <% messages = chat_room.chat_messages %>
+                <%# メッセージ一覧の中の最新のメッセージのメッセージ内容を取得%>
+                  <% newest_message = messages.last.message %>
+                <%# 表示 %>
+                  <p><%= newest_message %></p>
 
-              <%# 以下のコードだと相手から送ったメッセージの最新のものは取得できるが、自分のメッセージは検索できない %>
-              <%# <% messages = current_user_chat_room.chat_messages.where(user_id: user.id).first.message if current_user_chat_room.chat_messages.where(user_id: user.id).first != nil %>
+                <%# 以下のコードだと相手から送ったメッセージの最新のものは取得できるが、自分のメッセージは検索できない %>
+                <%# <% messages = current_user_chat_room.chat_messages.where(user_id: user.id).first.message if current_user_chat_room.chat_messages.where(user_id: user.id).first != nil %>
+              </div>
+            </div>
+            <div class="open-chat">
+              <%= form_tag :chat_index, method: :post do %>
+                <input name="user_id" type="hidden" value="<%= user.id %>" />
+                <%= submit_tag 'チャットを開く', class: "btn btn-primary btn-sm mb-2 " %>
+              <% end %>
             </div>
           </div>
-          <div class="open-chat">
-            <%= form_tag :chat_index, method: :post do %>
-              <input name="user_id" type="hidden" value="<%= user.id %>" />
-              <%= submit_tag 'チャットを開く', class: "btn btn-primary btn-sm mb-2 " %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

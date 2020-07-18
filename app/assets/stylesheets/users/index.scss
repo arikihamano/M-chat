@@ -42,20 +42,20 @@ a {
   font-family: cursive;
 }
 
-.search-button {
-  border-radius: 2px !important;
-}
-
-.search-box {
-  border-radius: 2px !important;
-}
-
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: #966e52;
   border-color: #966e52;
   box-shadow: none;
   outline: none;
+}
+
+.search-button {
+  border-radius: 2px !important;
+}
+
+.search-box {
+  border-radius: 2px !important;
 }
 
 .btn-primary {
@@ -71,6 +71,14 @@ section {
 #team .card {
   border: none;
   background: #ffffff;
+}
+
+.search-box {
+  margin-bottom: 30px;
+}
+
+.search-form {
+  width: 80%;
 }
 
 .user-box {
