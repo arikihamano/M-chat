@@ -1,16 +1,12 @@
 <%= render partial: 'common/navbar' %>
 
-
-
-
-
 <div class="topPage">
   <section id="team" class="pb-5">
       <div class="container">
           <div class="row">
             <div class="col-12">
               <div class="search-box">
-                  <div class="card">
+                  <div class="card stylish-shadow">
                       <div class="card-body text-center">
                             <%= form_with(url: users_path, method: :get, local: true) do |f| %>
                               <%= f.text_field :search, class: "search-form", :value => params[:search], :placeholder => "ユーザー名を入力" %>
@@ -25,7 +21,7 @@
             <% @users.each do |user| %>
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                   <div class="user-box">
-                      <div class="card">
+                      <div class="card stylish-shadow">
                           <div class="card-body text-center">
                               <p><img class=" img-fluid" src="<%= user.img_name %>" alt="card image"></p>
                               <h4><%= link_to user.name, user_path(user[:id]), class: "card-title" %></h4>

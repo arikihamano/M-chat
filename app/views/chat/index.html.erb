@@ -4,7 +4,7 @@
     <% @current_user_chat_rooms.each do |current_user_chat_room| %>
       <div class="list-group">
         <% if current_user_chat_room != nil %>
-          <div class="list-group-item">
+          <div class="list-group-item stylish-shadow">
             <% user = current_user_chat_room.chat_room_users.where.not(user_id: current_user.id).first.user %>
             <p><img class="user-img" src="<%= user.img_name %>" alt="card image"></p>
 
@@ -19,7 +19,7 @@
                 <%# そのチャットルームのメッセージ一覧を取得 %>
                   <% messages = chat_room.chat_messages %>
                 <%# メッセージ一覧の中の最新のメッセージのメッセージ内容を取得%>
-                  <% newest_message = messages.last.message %>
+                  <% newest_message = messages.last.message if messages.last != nil %>
                 <%# 表示 %>
                   <p><%= newest_message %></p>
 
