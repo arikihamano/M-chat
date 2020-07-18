@@ -35,3 +35,13 @@
   margin-top: 10px;
   color: #9198a7;
 }
+
+.user-list {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .user-list {
+    margin-top: 220px;
+  }
+}

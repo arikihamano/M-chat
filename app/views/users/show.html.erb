@@ -1,26 +1,16 @@
-<div class='usershowPage'>
-  <div class='container'>
-  <% 
-=begin
-%>
-    // 使わないロゴなのでコメントアウト
-    <header class="header">
-      <p class='header_logo'>
-        <%= link_to image_tag("techpit-march-icon.png"), users_path %>
-      </p>
-    </header>
-    <%
-=end
-%>
-    <div class='userInfo'>
+<%= render partial: 'common/navbar' %>
+
+<div class="container user-show" >
+  <div class='usershowPage'>
+    <div class='userInfo pb-3'>
       <div class='userInfo_img'>
         <%= image_tag @user.img_name.url(:thumb) %>
       </div>
       <div class='userInfo_name'><%= @user.name%></div>
-      <div class='userInfo_selfIntroduction'><%= @user.self_introduction %></div>
+      <div class='userInfo_selfIntroduction container'><%= @user.self_introduction %></div>
     </div>
     <% if current_user.id == @user.id %>
-      <div class='userAction'>
+      <div class='userAction pb-3'>
         <div class="userAction_edit userAction_common">
           <%= link_to(content_tag(:i, "", class: 'fas fa-edit fa-2x'), edit_user_registration_path) %>
           <span>情報を編集</span>

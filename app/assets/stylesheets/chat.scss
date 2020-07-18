@@ -2,6 +2,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .chatPage {
+  margin-top: 55px;
   input[type="text"]:focus {
     outline: 0;
   }
@@ -102,4 +103,10 @@
   border-color: #6c757d;
   color: #495057;
   cursor: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .chatPage {
+    margin-top: 215px;
+  }
 }

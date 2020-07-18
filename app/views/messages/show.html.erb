@@ -1,6 +1,6 @@
 <div id="chat_room-id" data-chat_room-id="<%= @chat_room.try(:id) %>"></div>
 <div id="user-id" data-user-id="<%= current_user.id %>"></div>
-
+  <%= render partial: 'common/navbar' %>
 <div class="chatPage">
   <header class="header">
   <%= link_to "", users_path, class: "linkToUserIndex" %>
