@@ -10,6 +10,24 @@
 
 .list-group-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.user-info {
+  margin-left: 20px;
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+.open-chat {
+  margin-left: auto;
+}
+
+.user-name {
+  color: #60412b;
+}
+
+.last-message {
+  margin-top: 10px;
+  color: #9198a7;
 }
