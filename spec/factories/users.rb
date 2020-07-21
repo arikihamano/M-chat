@@ -6,7 +6,7 @@ FactoryBot.define do
     name { '田中 太郎' }
     email { 'taro.tanaka@example.com' }
     self_introduction { 'こんにちは' }
-    encrypted_password { 'password' }
+    password { 'password' }
     img_name { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/example.jpg')) }
   end
 
@@ -14,7 +14,7 @@ FactoryBot.define do
     name { '山田 花子' }
     email { 'hanako.yamada@example.com' }
     self_introduction { 'こんにちは' }
-    encrypted_password { 'password' }
+    password { 'password' }
     img_name { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/example.jpg')) }
   end
 end
