@@ -3,7 +3,7 @@ FactoryBot.define do
   end
 
   factory :user_tanaka, class: 'User' do
-    name { '田中 太郎' }
+    name { '田中　太郎' }
     email { 'taro.tanaka@example.com' }
     self_introduction { 'こんにちは' }
     password { 'password' }

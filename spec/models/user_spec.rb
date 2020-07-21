@@ -8,16 +8,16 @@ RSpec.describe User, type: :model do
         expect(user).to be_valid
         # userが正しく作成できたら保存するテストも書く
         
-        put user
+        # put user
         
         user.save
 
-        #保存したデータが正しいかどうかを確かめるテスト
-        expect(user.name).to eq（"田中　太郎"）
-        expect(user.email).to eq（"taro.tanaka@example.com"）
-        expect(user.self_introduction).to eq（"こんにちは"）
-        expect(user.password).to eq（"password"）
-        expect(user.img_name).to eq（File.join(Rails.root, 'spec/fixtures/example.jpg')）
+        # #保存したデータが正しいかどうかを確かめるテスト
+        expect(user.name).to eq("田中　太郎")
+        expect(user.email).to eq("taro.tanaka@example.com")
+        expect(user.self_introduction).to eq("こんにちは")
+        expect(user.password).to eq("password")
+        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example.jpg")
       end
     end
   end
