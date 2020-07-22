@@ -68,16 +68,16 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # describe "メールアドレスの形式" do
-  #   context "不正な形式のメールアドレスの場合" do
-  #     it 'エラーになること' do
-  #       new_user = User.new
-  #       new_user.email = "taro.tanaka"
-  #       expect(new_user).not_to be_valid
-  #       expect(new_user.errors[:email]).to include(I18nt.t('errors.messages.invalid'))
-  #     end
-  #   end  
-  # end
+  describe "メールアドレスの形式" do
+    context "不正な形式のメールアドレスの場合" do
+      it 'エラーになること' do
+        new_user = User.new
+        new_user.email = "taro.tanaka"
+        expect(new_user).not_to be_valid
+        expect(new_user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
+      end
+    end  
+  end
   
   
 end
