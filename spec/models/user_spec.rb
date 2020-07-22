@@ -45,28 +45,28 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # describe "ユーザー登録時の条件" do
-  #   context "メールアドレスを確認すること" do
-  #     before do
-  #       FactoryBot.create(:user_tanaka)
-  #     end
-  #     it '同じメールアドレスで再び登録できないこと' do
+  describe "ユーザー登録時の条件" do
+    context "メールアドレスを確認すること" do
+      before do
+        FactoryBot.create(:user_tanaka)
+      end
+      it '同じメールアドレスで再び登録できないこと' do
 
-  #       user2 = FactoryBot.build(:user_tanka, self_introduction: "ハロー")
-  #       expect(user2).not_to be_valid
-  #       expect(user2.errors[:email]).to include(I18n.t('errors.messages.taken'))
-  #       expect(user2.save).to be_falsey
-  #       expect(User.all.size).to eq 1
-  #     end
-  #     it '異なるメールアドレスでは再び登録できること' do
-  #       user_yamada = FactoryBot.build(:user_yamada)
+        user2 = FactoryBot.build(:user_tanaka, self_introduction: "ハロー")
+        expect(user2).not_to be_valid
+        expect(user2.errors[:email]).to include(I18n.t('errors.messages.taken'))
+        expect(user2.save).to be_falsey
+        expect(User.all.size).to eq 1
+      end
+      it '異なるメールアドレスでは再び登録できること' do
+        user_yamada = FactoryBot.build(:user_yamada)
 
-  #       expect(user_yamada).to be_valid
-  #       user_yamada.save
-  #       expect(User.all.size).to eq 2
-  #     end
-  #   end
-  # end
+        expect(user_yamada).to be_valid
+        user_yamada.save
+        expect(User.all.size).to eq 2
+      end
+    end
+  end
 
   # describe "メールアドレスの形式" do
   #   context "不正な形式のメールアドレスの場合" do
