@@ -21,23 +21,21 @@ RSpec.describe User, type: :model do
       end
     end
   end
-  # describe "入力項目の有無" do
+  describe "入力項目の有無" do
+    let(:new_user) {User.new}
+    context "必須項目であること" do
+      it "すべて空欄で保存しようとしたときエラーとなること" do
+        expect(new_user).not_to be_valid
+        expect(new_user.errors[:name]).to include(I18n.t('errors.messages.blank'))
+        expect(new_user.errors[:email]).to include(I18n.t('errors.messages.blank'))
+        expect(new_user.errors[:img_name]).to include(I18n.t('errors.messages.blank'))
+        expect(new_user.errors[:encrypted_password]).to include(I18n.t('errors.messages.blank'))
+      end
 
-  #   let(:new_user) {User.new}
-
-  #   context "必須項目であること" do
-  #     it "すべて空欄で保存しようとしたときエラーとなること" do
-  #       expect(new_user).not_to be_valid
-  #       expect(new_user.errors[:name]).to include(I18n.t('errors.messages.blank'))
-  #       expect(new_user.errors[:email]).to include(I18n.t('errors.messages.blank'))
-  #       expect(new_user.errors[:img_name]).to include(I18n.t('errors.messages.blank'))
-  #       expect(new_user.errors[:encrypted_password]).to include(I18n.t('errors.messages.blank'))
-  #     end
-
-  #     it "登録できないこと" do
-  #       expect(user.save).to be_falsey
-  #     end
-  #   end
+      it "登録できないこと" do
+        expect(new_user.save).to be_falsey
+      end
+    end
 
   #   context '任意入力であること' do
   #     it '自己紹介は任意入力であること' do
@@ -45,7 +43,7 @@ RSpec.describe User, type: :model do
   #       expect(new_user.errors[:self_introduction]).not_to include(I18n.t('errors.messages.blank'))
   #     end
   #   end
-  # end
+  end
 
   # describe "ユーザー登録時の条件" do
   #   context "メールアドレスを確認すること" do
