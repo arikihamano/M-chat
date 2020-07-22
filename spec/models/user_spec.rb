@@ -37,12 +37,12 @@ RSpec.describe User, type: :model do
       end
     end
 
-  #   context '任意入力であること' do
-  #     it '自己紹介は任意入力であること' do
-  #       expect(new_user).not_to be_valid
-  #       expect(new_user.errors[:self_introduction]).not_to include(I18n.t('errors.messages.blank'))
-  #     end
-  #   end
+    context '任意入力であること' do
+      it '自己紹介は任意入力であること' do
+        expect(new_user).not_to be_valid
+        expect(new_user.errors[:self_introduction]).not_to include(I18n.t('errors.messages.blank'))
+      end
+    end
   end
 
   # describe "ユーザー登録時の条件" do
