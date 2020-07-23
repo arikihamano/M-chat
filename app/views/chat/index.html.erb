@@ -5,7 +5,7 @@
       <div class="list-group">
         <% if current_user_chat_room != nil %>
           <div class="list-group-item stylish-shadow">
-            <% user = current_user_chat_room.chat_room_users.where.not(user_id: current_user.id) %>
+            <% user = current_user_chat_room.chat_room_users.where.not(user_id: current_user.id).first.user %>
 
             <p><img class="user-img" src="<%= user.img_name %>" alt="card image"></p>
 

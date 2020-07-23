@@ -7,21 +7,22 @@ RSpec.describe User, type: :model do
         user = FactoryBot.build(:user_tanaka)
         expect(user).to be_valid
         # userが正しく作成できたら保存するテストも書く
-        # user.save
+        
+        # put user
+        
+        user.save
 
-        #保存したデータが正しいかどうかを確かめるテスト
-        # expect(user.name).to eq（"田中　太郎"）
-        # expect(user.email).to eq（"taro.tanaka@example.com"）
-        # expect(user.self_introduction).to eq（"こんにちは"）
-        # expect(user.encrypted_password).to eq（"password"）
-        # expect(user.img_name).to eq（File.join(Rails.root, 'spec/fixtures/example.jpg')）
+        # #保存したデータが正しいかどうかを確かめるテスト
+        expect(user.name).to eq("田中　太郎")
+        expect(user.email).to eq("taro.tanaka@example.com")
+        expect(user.self_introduction).to eq("こんにちは")
+        expect(user.password).to eq("password")
+        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example.jpg")
       end
     end
   end
   describe "入力項目の有無" do
-
     let(:new_user) {User.new}
-
     context "必須項目であること" do
       it "すべて空欄で保存しようとしたときエラーとなること" do
         expect(new_user).not_to be_valid
@@ -32,7 +33,7 @@ RSpec.describe User, type: :model do
       end
 
       it "登録できないこと" do
-        expect(user.save).to be_falsey
+        expect(new_user.save).to be_falsey
       end
     end
 
@@ -51,7 +52,7 @@ RSpec.describe User, type: :model do
       end
       it '同じメールアドレスで再び登録できないこと' do
 
-        user2 = FactoryBot.build(:user_tanka, self_introduction: "ハロー")
+        user2 = FactoryBot.build(:user_tanaka, self_introduction: "ハロー")
         expect(user2).not_to be_valid
         expect(user2.errors[:email]).to include(I18n.t('errors.messages.taken'))
         expect(user2.save).to be_falsey
@@ -73,7 +74,7 @@ RSpec.describe User, type: :model do
         new_user = User.new
         new_user.email = "taro.tanaka"
         expect(new_user).not_to be_valid
-        expect(new_user.errors[:email]).to include(I18nt.t('errors.messages.invalid'))
+        expect(new_user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
       end
     end  
   end
