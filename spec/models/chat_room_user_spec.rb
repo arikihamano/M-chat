@@ -22,6 +22,11 @@ RSpec.describe ChatRoomUser, type: :model do
         chat_room_user = FactoryBot.build(:chat_room_user)
         expect(chat_room_user).to be_valid
         chat_room_user.save
+
+        registered_chat_room_user = ChatRoomUser.find(1)
+
+        expect(registered_chat_room_user.user_id).to eq(1)
+        expect(registered_chat_room_user.chat_room_id).to eq(1)
       end
     end
   end
