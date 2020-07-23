@@ -19,12 +19,8 @@ RSpec.describe ChatRoomUser, type: :model do
   describe "正常系の機能" do
     context 'ルームを作成する' do
       it '正しくルームとの紐付けを作成できること' do
-        chat_room_user = ChatRoomUser.new(
-          chat_room_id: 1,
-          user_id: 1
-        )
-        expect(chat_room_user).to be_valid 
-
+        chat_room_user = FactoryBot.build(:chat_room_user)
+        expect(chat_room_user).to be_valid
         chat_room_user.save
       end
     end
@@ -34,8 +30,7 @@ RSpec.describe ChatRoomUser, type: :model do
     context '必須項目であること' do
       it 'チャットルームIDが必須であること' do
         new_chat_room_user = ChatRoomUser.new(chat_room_id: 1)
-        expect(new_chat_room_user).not_to be_valid  
-        
+        expect(new_chat_room_user).not_to be_valid
       end
       it 'ユーザーIDが必須であること' do
         new_chat_room_user = ChatRoomUser.new(user_id: 1)
@@ -51,13 +46,7 @@ RSpec.describe ChatRoomUser, type: :model do
   describe "データ作成時の条件" do
     context "ユーザーとチャットルームの組み合わせの一意性を確認すること" do
       it '同じユーザーとチャットルームの組み合わせの重複データは作成できないこと' do
-        chat_room_user = ChatRoomUser.new(
-          chat_room_id: 1,
-          user_id: 1
-        )
-        expect(chat_room_user).to be_valid 
-
-        chat_room_user.save
+        FactoryBot.create(:chat_room_user)
 
         chat_room_user_again = ChatRoomUser.new(
           chat_room_id: 1,
@@ -68,13 +57,8 @@ RSpec.describe ChatRoomUser, type: :model do
       end
 
       it '同じチャットルームでも別のユーザーであればデータの作成ができること' do
-        chat_room_user = ChatRoomUser.new(
-          chat_room_id: 1,
-          user_id: 1
-        )
-        expect(chat_room_user).to be_valid 
+        FactoryBot.build(:chat_room_user)
 
-        chat_room_user.save
         user_yamada = User.new(
           name: '山田　花子',
           email: 'hanako.yamada@example.com',
@@ -94,13 +78,7 @@ RSpec.describe ChatRoomUser, type: :model do
       end
 
       it '同じユーザーでも別のチャットルームであればデータの作成ができること' do
-        chat_room_user = ChatRoomUser.new(
-          chat_room_id: 1,
-          user_id: 1
-        )
-        expect(chat_room_user).to be_valid 
-
-        chat_room_user.save
+        FactoryBot.build(:chat_room_user)
 
         chat_room_2 = ChatRoom.new()
         chat_room_2.save
@@ -116,13 +94,7 @@ RSpec.describe ChatRoomUser, type: :model do
       end
 
       it '別のユーザーで別のチャットルームであればデータの作成ができること' do
-        chat_room_user = ChatRoomUser.new(
-          chat_room_id: 1,
-          user_id: 1
-        )
-        expect(chat_room_user).to be_valid 
-
-        chat_room_user.save
+        FactoryBot.build(:chat_room_user)
 
         user_yamada = User.new(
           name: '山田　花子',
