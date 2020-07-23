@@ -28,7 +28,7 @@ RSpec.describe ChatMessage, type: :model do
 
         created_message =  ChatMessage.find(1)
         expect(created_message.chat_room_id).to eq(1)
-        expect(created_message.user_id).to eq(1)  
+        expect(created_message.user_id).to eq(1)
       end
     end
   end
