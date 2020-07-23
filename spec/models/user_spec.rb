@@ -6,10 +6,6 @@ RSpec.describe User, type: :model do
       it '正しくユーザー登録できること' do
         user = FactoryBot.build(:user_tanaka)
         expect(user).to be_valid
-        # userが正しく作成できたら保存するテストも書く
-        
-        # put user
-        
         user.save
 
         # #保存したデータが正しいかどうかを確かめるテスト
@@ -18,6 +14,30 @@ RSpec.describe User, type: :model do
         expect(user.self_introduction).to eq("こんにちは")
         expect(user.password).to eq("password")
         expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example.jpg")
+      end
+    end
+
+    context "ユーザー編集をする" do
+      it '正しくユーザー情報の編集ができること' do
+        FactoryBot.create(:user_tanaka)
+        user = User.find(1)
+        expect(user.name).to eq("田中　太郎")
+        expect(user.email).to eq("taro.tanaka@example.com")
+        expect(user.self_introduction).to eq("こんにちは")
+        expect(user.password).to eq(nil)
+        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example.jpg")
+
+        user.name = "中田　太郎"
+        user.email = "taro.nakata@example.com"
+        user.self_introduction = "よろしく"
+        user.password = "aaaaaaaa"
+        user.img_name = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/example2.jpg'))
+        user.save
+        expect(user.name).to eq("中田　太郎")
+        expect(user.email).to eq("taro.nakata@example.com")
+        expect(user.self_introduction).to eq("よろしく")
+        expect(user.password).to eq("aaaaaaaa")
+        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example2.jpg")
       end
     end
   end
