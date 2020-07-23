@@ -45,19 +45,11 @@ RSpec.describe ChatRoomUser, type: :model do
 
   describe "データ作成時の条件" do
     context "ユーザーとチャットルームの組み合わせの一意性を確認すること" do
-      it '同じユーザーとチャットルームの組み合わせの重複データは作成できないこと' do
+      before do
         FactoryBot.create(:chat_room_user)
 
-        chat_room_user_again = ChatRoomUser.new(
-          chat_room_id: 1,
-          user_id: 1
-        )
-        expect(chat_room_user_again).to_not be_valid
-        expect(chat_room_user_again.save).to be_falsey
-      end
-
-      it '同じチャットルームでも別のユーザーであればデータの作成ができること' do
-        FactoryBot.build(:chat_room_user)
+        chat_room_2 = ChatRoom.new()
+        chat_room_2.save
 
         user_yamada = User.new(
           name: '山田　花子',
@@ -67,7 +59,17 @@ RSpec.describe ChatRoomUser, type: :model do
           img_name: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/example.jpg'))
         )
         user_yamada.save
+      end
+      it '同じユーザーとチャットルームの組み合わせの重複データは作成できないこと' do
+        chat_room_user_again = ChatRoomUser.new(
+          chat_room_id: 1,
+          user_id: 1
+        )
+        expect(chat_room_user_again).to_not be_valid
+        expect(chat_room_user_again.save).to be_falsey
+      end
 
+      it '同じチャットルームでも別のユーザーであればデータの作成ができること' do
         chat_room_user2 = ChatRoomUser.new(
           chat_room_id: 1,
           user_id: 2
@@ -78,11 +80,6 @@ RSpec.describe ChatRoomUser, type: :model do
       end
 
       it '同じユーザーでも別のチャットルームであればデータの作成ができること' do
-        FactoryBot.build(:chat_room_user)
-
-        chat_room_2 = ChatRoom.new()
-        chat_room_2.save
-
         chat_room_user2 = ChatRoomUser.new(
           chat_room_id: 2,
           user_id: 1
@@ -94,20 +91,6 @@ RSpec.describe ChatRoomUser, type: :model do
       end
 
       it '別のユーザーで別のチャットルームであればデータの作成ができること' do
-        FactoryBot.build(:chat_room_user)
-
-        user_yamada = User.new(
-          name: '山田　花子',
-          email: 'hanako.yamada@example.com',
-          self_introduction: 'こんにちは',
-          password: 'password',
-          img_name: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/example.jpg'))
-        )
-        user_yamada.save
-
-        chat_room_2 = ChatRoom.new()
-        chat_room_2.save
-
         chat_room_user2 = ChatRoomUser.new(
           chat_room_id: 2,
           user_id: 2
