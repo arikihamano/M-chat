@@ -96,9 +96,7 @@ RSpec.describe User, type: :model do
         expect(new_user).not_to be_valid
         expect(new_user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
       end
-    end  
+    end
   end
-  
-  
 end
 

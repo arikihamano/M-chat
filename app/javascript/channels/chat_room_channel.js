@@ -3,7 +3,6 @@ import consumer from "./consumer";
 document.addEventListener("turbolinks:load", () => {
   window.messageContent = document.getElementById("content");
 
-  // ********** 以下を追加 **********
   const messageButton = document.getElementById("message-button");
 
   // 空欄でなければボタンを有効化，空欄なら無効化する関数
@@ -24,7 +23,6 @@ document.addEventListener("turbolinks:load", () => {
   messageButton.addEventListener("click", () => {
     messageButton.classList.add("disabled");
   });
-  // ********** 以上を追加 **********
 
   const chat_room_element = document.getElementById("chat_room-id");
   const chat_room_id = Number(
@@ -35,7 +33,6 @@ document.addEventListener("turbolinks:load", () => {
     {
       connected() {
         console.log("connected to" + chat_room_id);
-        // Called when the subscription is ready for use on the server
       },
 
       disconnected() {
@@ -46,7 +43,7 @@ document.addEventListener("turbolinks:load", () => {
         console.log(data);
         const user_element = document.getElementById("user-id");
         const user_id = Number(user_element.getAttribute("data-user-id"));
-        // 以下はメッセージの送信者によって、クラスを付与してメッセージの配置を変更する場合
+
         let html;
 
         if (user_id === data.chat_message.user_id) {
