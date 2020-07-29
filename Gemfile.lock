@@ -282,7 +282,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.5.0)
   byebug
-  capybara (>= 2.15)
+  capybara
   carrierwave (~> 2.0)
   debase
   devise
