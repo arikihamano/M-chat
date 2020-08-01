@@ -16,7 +16,7 @@
           <span>情報を編集</span>
         </div>
         <div class='userAction_logout userAction_common'>
-          <%= link_to(content_tag(:i, "", class: 'fas fa-cog fa-2x'), destroy_user_session_path, method: :delete) %>
+            <%= link_to(content_tag(:i, "", class: 'fas fa-cog fa-2x', id: "signout-btn"), destroy_user_session_path, method: :delete) %>
           <span>ログアウト</span>
         </div>
       </div>
