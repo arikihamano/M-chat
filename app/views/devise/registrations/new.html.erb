@@ -44,7 +44,7 @@
       </div>
       <div class="form-group">
         <label>自己紹介文</label>
-        <%= text_area :user, :self_introduction, maxlength: "1000", rows: "10", class:"form-control" %>
+        <%= text_area :user, :self_introduction, maxlength: "1000", rows: "10", class:"form-control", placeholder: "自己紹介文を入力してください（任意）" %>
       </div>
       <div class="text-center">
         <%= f.submit "はじめる", class: "btn submitBtn stylish-shadow" %>

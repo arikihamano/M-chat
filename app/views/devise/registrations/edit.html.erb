@@ -4,20 +4,20 @@
     <%= form_for current_user, url: registration_path(current_user) do |f| %>
       <div class="form-group">
         <%= f.label '名前' %>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, class: "form-control", id: "name-edit" %>
       </div>
       <div class="form-group">
         <%= f.label '自己紹介' %>
-        <%= f.text_area :self_introduction, class: "form-control" %>
+        <%= f.text_area :self_introduction, class: "form-control", id: "selfintroduction-edit" %>
       </div>
       <div class="form-group">
         画像:
-        <%= f.file_field :img_name %>
+        <%= f.file_field :img_name, id: "profile_picture-edit" %>
       </div>
 
       <div class="form-group">
         <%= f.label '更新するにはパスワードを入力してください' %>
-        <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+        <%= f.password_field :current_password, class: "form-control", autocomplete: "off", id: "password-edit" %>
       </div>
       <div class="text-center">
         <%= f.submit '更新', class: "btn submitBtn" %>
