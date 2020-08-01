@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
+  before do
+    user = FactoryBot.create(:user_tanaka)
+  end
   describe '正常' do
     context "ユーザー登録する" do
       it "登録できること" do
@@ -40,7 +43,7 @@ RSpec.describe "Users", type: :system do
 
         sleep 2
 
-        visit "/users/1"
+        visit "/users/2"
 
         sleep 3
         visit "/users/edit"
@@ -73,7 +76,7 @@ RSpec.describe "Users", type: :system do
 
         sleep 2
 
-        visit "/users/1"
+        visit "/users/2"
 
         sleep 3
         find('#signout-btn').click
@@ -119,7 +122,7 @@ RSpec.describe "Users", type: :system do
 
         sleep 2
 
-        visit "/users/1"
+        visit "/users/2"
 
         sleep 3
         visit "/users/edit"
