@@ -54,7 +54,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'password-edit', with: "password"
         sleep 2
         click_button '更新'
-        expect(page).to have_content 'M chatを始めよう！'
+        expect(page).to have_content 'ユーザー一覧'
         expect(page).not_to have_content 'アカウント編集'
         sleep 5
       end
