@@ -71,3 +71,5 @@ gem 'mini_magick'
 gem 'pry-rails'
 
 gem 'rb-readline'
+
+gem 'action-cable-testing'
