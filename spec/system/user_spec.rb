@@ -78,19 +78,28 @@ RSpec.describe "Users", type: :system do
 
         visit "/users/2"
 
-        sleep 3
+        sleep 2
         find('#signout-btn').click
 
         expect(page).to have_content 'M chatを始めよう！'
 
-        sleep 3
+        sleep 2
+
+        visit "/users/sign_in"
+        fill_in 'emailを入力してください', with: "integration@example.com"
+        fill_in 'パスワードを入力してください', with: "password"
+        click_button 'ログインする'
+        expect(page).to have_content 'ユーザー一覧'
+
+        sleep 2
+
       end
     end
   end
 
   describe '異常' do
     context "必須項目が未入力" do
-      it "エラーメッセージが表示され、回答できないこと" do
+      it "サインアップ時、エラーメッセージが表示され、登録できないこと" do
         visit "/users/sign_up"
         sleep 2
         click_button 'はじめる'
@@ -103,6 +112,16 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content 'ユーザー名を入力してください'
         expect(page).to have_content '確認用パスワードを入力してください'
         sleep 5
+      end
+
+      it "ログイン時、エラーメッセージが表示され、回答できないこと" do
+        visit "/users/sign_in"
+        sleep 2
+        click_button "ログインする"
+
+        expect(page).not_to have_content 'ユーザー一覧'
+        expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
+        sleep 3
       end
     end
 
@@ -132,7 +151,7 @@ RSpec.describe "Users", type: :system do
         attach_file 'profile_picture-edit', "#{Rails.root}/spec/fixtures/example2.jpg"
         sleep 2
         click_button '更新'
-        expect(page).to_not have_content 'M chatを始めよう！'
+        expect(page).to_not have_content 'ユーザー一覧'
         expect(page).to have_content 'アカウント編集'
         sleep 5
       end
