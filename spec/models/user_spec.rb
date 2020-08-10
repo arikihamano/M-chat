@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
         expect(user.email).to eq("taro.tanaka@example.com")
         expect(user.self_introduction).to eq("こんにちは")
         expect(user.password).to eq("password")
-        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example.jpg")
+        expect(user.img_name.path).to include("M-chat/public/uploads/user/img_name/1/example.jpg")
       end
     end
 
@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
         expect(user.email).to eq("taro.tanaka@example.com")
         expect(user.self_introduction).to eq("こんにちは")
         expect(user.password).to eq(nil)
-        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example.jpg")
+        expect(user.img_name.path).to include("M-chat/public/uploads/user/img_name/1/example.jpg")
 
         user.name = "中田　太郎"
         user.email = "taro.nakata@example.com"
@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
         expect(user.email).to eq("taro.nakata@example.com")
         expect(user.self_introduction).to eq("よろしく")
         expect(user.password).to eq("aaaaaaaa")
-        expect(user.img_name.path).to eq("/Users/arikihamano/Desktop/M-chat/M-chat/public/uploads/user/img_name/1/example2.jpg")
+        expect(user.img_name.path).to include("M-chat/public/uploads/user/img_name/1/example2.jpg")
       end
     end
   end
