@@ -1,0 +1,47 @@
+.container {
+  padding-top: 20px;
+}
+
+.user-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  .user-img {
+    margin-top: 10px;
+  }
+}
+
+.user-info {
+  margin-left: 20px;
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+.open-chat {
+  margin-left: auto;
+}
+
+.user-name {
+  color: #60412b;
+}
+
+.last-message {
+  margin-top: 10px;
+  color: #9198a7;
+}
+
+.user-list {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .user-list {
+    margin-top: 220px;
+  }
+}

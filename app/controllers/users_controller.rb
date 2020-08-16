@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    
     @users = if params[:search]
       @users= User.where.not(id:current_user.id).where('name LIKE ?', "%#{params[:search]}%")
     else

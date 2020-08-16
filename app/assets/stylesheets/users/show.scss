@@ -1,20 +1,15 @@
-.usershowPage {
-  // 使わないロゴなのでコメントアウト
-  // .header {
-  //   display: flex;
-  //   flex-direction: row-reverse;
-  //   padding-top: 10px;
-  //   &_logo {
-  //     & > a {
-  //       width: 40px;
-  //       display: block;
-  //       & > img {
-  //         width: 100%;
-  //       }
-  //     }
-  //   }
-  // }
+.user-show {
+  margin-top: 50px;
+}
+@media screen and (max-width: 767px) {
+  .user-show {
+    margin-top: 220px;
+  }
+}
 
+.usershowPage {
+  border-radius: 5px;
+  background-color: #fff;
   .userInfo {
     &_img {
       width: 170px;

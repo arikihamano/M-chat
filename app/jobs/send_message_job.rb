@@ -2,9 +2,7 @@ class SendMessageJob < ApplicationJob
   queue_as :default
 
   def perform(chat_message)
-    # html = ApplicationController.render(
-
-    # deviseのときはこっち？
+    # deviseのときはApplicationController.renderではなく、ApplicationController.render_with_signed_in_userを使う
     mine = ApplicationController.render_with_signed_in_user(
       chat_message.user,
       partial: 'messages/mine',

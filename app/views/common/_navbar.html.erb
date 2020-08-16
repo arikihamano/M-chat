@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top">
+    <div  class="title navbar-brand text-light font-weight-bold">M Chat</div>
+
+    <div id="nav">
+        <div class="navbar-nav ">
+            <%= link_to "ユーザー一覧", users_path, class: "nav-link text-light font-weight-bold px-3" %>
+            <%= link_to "チャット一覧", chat_index_path, class: "nav-link text-light font-weight-bold px-3" %>
+            <%= link_to "自分のプロフィール", user_path(current_user[:id]), class: "nav-link text-light font-weight-bold px-3" %>
+        </div>
+    </div>
+</nav>
