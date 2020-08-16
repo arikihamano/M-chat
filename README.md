@@ -4,11 +4,7 @@ M-chat
 
 ## Description
 
-<!-- M-chat is an in-house chat application with profile function. -->
-
-## DEMO
-
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
+M-chat is a chat application.
 
 ## Features
 
