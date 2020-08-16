@@ -73,3 +73,7 @@ gem 'pry-rails'
 
 gem 'rb-readline'
 gem 'dotenv-rails'
+
+group :production, :staging do
+    gem 'unicorn'
+end
