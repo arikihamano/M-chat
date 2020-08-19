@@ -1,6 +1,6 @@
 <div class="message">
   <span class="message__name">
-    <%= chat_message.user.name %>
+    <img class="chat-user-img mr-2" src="<%= chat_message.user.img_name %>"><%= chat_message.user.name %>
   </span>
   <div class="message__text">
     <div><%= chat_message.message %></div>
