@@ -29,8 +29,6 @@ document.addEventListener("turbolinks:load", () => {
   // 送信ボタンが押された時にボタンを無効化
   messageButton.addEventListener("click", () => {
     messageButton.classList.add("disabled");
-    window.messageContainer = document.getElementById("chat-messages");
-    scrollToBottom();
   });
 
   // サブスクリプションのためのデータ取得
@@ -67,6 +65,13 @@ document.addEventListener("turbolinks:load", () => {
 
         const messageContainer = document.getElementById("chat-messages");
         messageContainer.innerHTML = messageContainer.innerHTML + html;
+        if (user_id === data.chat_message.user_id) {
+          // もしチャットの送信者が本人であればページを下までスクロールする
+          window.messageContainer = document.getElementById("chat-messages");
+          scrollToBottom();
+        } else {
+          // もしチャットの送信者が相手であれば下までスクロールしない
+        }
       },
 
       speak: function () {
