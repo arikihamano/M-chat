@@ -26,6 +26,10 @@ document.addEventListener("turbolinks:load", () => {
     messageContainer.scroll(0, messageContainer.scrollHeight);
   };
 
+  // ページ読み込み時にスクロールさせる
+  window.messageContainer = document.getElementById("chat-messages");
+  scrollToBottom();
+
   // 送信ボタンが押された時にボタンを無効化
   messageButton.addEventListener("click", () => {
     messageButton.classList.add("disabled");
