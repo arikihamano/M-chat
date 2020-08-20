@@ -23,7 +23,7 @@ document.addEventListener("turbolinks:load", () => {
 
   window.scrollToBottom = () => {
     window.scroll(0, documentElement.scrollHeight);
-    messageContainer.scroll(0, messageContainer.scrollHeight + 100);
+    messageContainer.scroll(0, messageContainer.scrollHeight);
   };
 
   // 送信ボタンが押された時にボタンを無効化
@@ -42,8 +42,6 @@ document.addEventListener("turbolinks:load", () => {
     {
       connected() {
         console.log("connected to" + chat_room_id);
-        console.log(documentElement.scrollHeight);
-        console.log(messageContainer.scrollHeight);
       },
 
       disconnected() {
