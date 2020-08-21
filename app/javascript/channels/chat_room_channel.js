@@ -16,18 +16,31 @@ document.addEventListener("turbolinks:load", () => {
 
   // フォームに入力した際の動作
   messageContent.addEventListener("input", () => {
+    // ボタンを有効化する
     button_activation();
   });
+  const documentElement = document.documentElement;
+
+  window.scrollToBottom = () => {
+    window.scroll(0, documentElement.scrollHeight);
+    messageContainer.scroll(0, messageContainer.scrollHeight);
+  };
+
+  // ページ読み込み時にスクロールさせる
+  window.messageContainer = document.getElementById("chat-messages");
+  scrollToBottom();
 
   // 送信ボタンが押された時にボタンを無効化
   messageButton.addEventListener("click", () => {
     messageButton.classList.add("disabled");
   });
 
+  // サブスクリプションのためのデータ取得
   const chat_room_element = document.getElementById("chat_room-id");
   const chat_room_id = Number(
     chat_room_element.getAttribute("data-chat_room-id")
   );
+
   consumer.subscriptions.create(
     { channel: "ChatRoomChannel", chat_room_id: chat_room_id },
     {
@@ -54,6 +67,13 @@ document.addEventListener("turbolinks:load", () => {
 
         const messageContainer = document.getElementById("chat-messages");
         messageContainer.innerHTML = messageContainer.innerHTML + html;
+        if (user_id === data.chat_message.user_id) {
+          // もしチャットの送信者が本人であればページを下までスクロールする
+          window.messageContainer = document.getElementById("chat-messages");
+          scrollToBottom();
+        } else {
+          // もしチャットの送信者が相手であれば下までスクロールしない
+        }
       },
 
       speak: function () {

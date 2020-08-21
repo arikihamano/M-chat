@@ -52,10 +52,22 @@ a {
 
 .search-button {
   border-radius: 2px !important;
+  border-color: grey;
 }
 
 .search-box {
   border-radius: 2px !important;
+}
+
+.search-form {
+  width: 60%;
+}
+
+.csv-btn {
+  border-width: 1px;
+  border-radius: 3px !important;
+  height: 30px;
+  border-color: grey;
 }
 
 .btn-primary {
@@ -75,10 +87,6 @@ section {
 
 .search-box {
   margin-bottom: 30px;
-}
-
-.search-form {
-  width: 80%;
 }
 
 .user-box {
